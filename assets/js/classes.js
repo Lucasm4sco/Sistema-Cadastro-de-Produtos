@@ -24,10 +24,10 @@ class Produto {
 
 }
 
-class Roupa extends Produto{
+class Acessorios extends Produto{
     constructor(nome, valor){
         super(nome, valor);
-        this.categoria = 'Roupa';
+        this.categoria = 'Acessórios';
     }
 }
 
@@ -38,10 +38,17 @@ class Alimento extends Produto{
     }
 }
 
-class Bebidas extends Produto{
+class Bebida extends Produto{
     constructor(nome, valor){
         super(nome, valor);
         this.categoria = 'Bebidas';
+    }
+}
+
+class Eletronico extends Produto{
+    constructor(categoria, nome, valor){
+        super(nome, valor);
+        this.categoria = 'Eletrônico';
     }
 }
 
@@ -53,6 +60,7 @@ class Generica extends Produto{
 }
 
 const loja = new Loja('Big 1,99', 'Lucas');
+
 
 
 
