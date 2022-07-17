@@ -1,8 +1,10 @@
 class Loja{
+    nome;
+    propietario;
     produtos = [];
     constructor(nome, dono){
         this.nome = nome;
-        this.dono = dono;
+        this.propietario = dono;
         
     }
     setProduto(produto){
@@ -13,7 +15,7 @@ class Loja{
 class Produto {
     static id = 0;
     constructor(nome, valor){
-        this.nome = nome;
+        this.produto = nome;
         this.valor = valor;
         this.id = Produto.setID();
     }
@@ -24,44 +26,54 @@ class Produto {
 
 }
 
-class Acessorios extends Produto{
+class Acessorio extends Produto{
     constructor(nome, valor){
         super(nome, valor);
-        this.categoria = 'Acessórios';
     }
 }
 
 class Alimento extends Produto{
     constructor(nome, valor){
         super(nome, valor);
-        this.categoria = 'Alimento';
     }
 }
 
 class Bebida extends Produto{
     constructor(nome, valor){
         super(nome, valor);
-        this.categoria = 'Bebidas';
     }
 }
 
 class Eletronico extends Produto{
-    constructor(categoria, nome, valor){
+    constructor(nome, valor){
         super(nome, valor);
-        this.categoria = 'Eletrônico';
     }
 }
 
 class Generica extends Produto{
-    constructor(categoria, nome, valor){
+    constructor(nome, valor, categoria){
         super(nome, valor);
         this.categoria = categoria;
     }
 }
 
+function criarProduto(nome, valor, categoria){
+    let produto;
+    switch(categoria){
+        case 'Acessorio': produto = new Acessorio(nome, valor); break;
+        case 'Alimento': produto = new Alimento(nome, valor); break;
+        case 'Bebida': produto = new Bebida(nome, valor); break;
+        case 'Eletronico': produto = new Eletronico(nome, valor); break;
+        default:
+            produto = new Generica(nome, valor, categoria);
+    }
+    
+    return produto;
+}
+
 const loja = new Loja('Big 1,99', 'Lucas');
 
-
+export { loja, criarProduto }
 
 
 
