@@ -13,12 +13,13 @@ class Loja{
 }
 
 class Produto {
-    static id = 0;
+    id = 0;
     constructor(nome, valor){
         this.produto = nome;
         this.valor = valor;
         this.id = Produto.setID();
     }
+
     static setID(){
         this.id++
         return this.id;
@@ -73,7 +74,19 @@ function criarProduto(nome, valor, categoria){
 
 const loja = new Loja('Big 1,99', 'Lucas');
 
-export { loja, criarProduto }
+function adicionaProdutos(){
+    loja.produtos = [];
+    
+    loja.setProduto(criarProduto('Celular', 2000, 'Eletronico'));
+    loja.setProduto(criarProduto('Pulseira Masculina', 20, 'Acessorio'));
+    loja.setProduto(criarProduto('Energético', 5, 'Bebida'));
+    loja.setProduto(criarProduto('Boné', 50, 'Acessorio'))
+    loja.setProduto(criarProduto('Headset', 183.90, 'Eletronico'))
+}
+
+
+
+export { loja, criarProduto , adicionaProdutos}
 
 
 

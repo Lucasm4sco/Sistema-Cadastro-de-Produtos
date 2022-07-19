@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'node:path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import axios from 'axios';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -20,5 +19,3 @@ app.listen(PORT);
 
 app.get('/', (req, res) => res.render('../views/pages/index'));
 
-
-export default app

@@ -1,14 +1,16 @@
- 
-import { loja } from './js/classes.js';
-
+import { loja, adicionaProdutos } from './js/classes.js';
 
 async function getProdutos(){
+
+    adicionaProdutos();
+
     const promisse = await fetch('https://api-pr0dutos.herokuapp.com/produtos');
 
     const produtos = await promisse.json();
 
+
     produtos.forEach(produto => {
-        loja.setProduto(produto);
+        loja.setProduto(produto)
     });
 
     console.log(loja)
@@ -17,8 +19,11 @@ async function getProdutos(){
 
 async function setNewProduto(produto){
 
-    axios.post('https://api-pr0dutos.herokuapp.com/produtos', produto)
+    await axios.post('https://api-pr0dutos.herokuapp.com/produtos', produto)
 
+    await getProdutos();
+
+    console.log(loja)
 } 
 
 export { getProdutos, setNewProduto }

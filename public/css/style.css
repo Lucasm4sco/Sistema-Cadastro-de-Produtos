@@ -22,7 +22,7 @@ main {
     overflow: hidden;
 }
 
-aside {
+nav {
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.692);
@@ -33,13 +33,19 @@ aside {
     /* animation: menu 1s 1s forwards; */
 }
 
+@keyframes voltarMenu {
+    to {
+        left: 100%;
+    }
+}
+
 @keyframes menu {
     to {
         left: -100%;
     }
 }
 
-aside ul{
+nav ul{
     position: absolute;
     background-color: brown;
     height: 100%;
@@ -109,6 +115,20 @@ a {
     to{
         top: 10px;
         transform: rotate(45deg);
+    }
+}
+
+@keyframes retornar {
+    to {
+        top: 0;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes retornar2 {
+    to {
+        top: 20px;
+        transform: rotate(0deg);
     }
 }
 
