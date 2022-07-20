@@ -18,6 +18,7 @@ class Produto {
         this.produto = nome;
         this.valor = valor;
         this.id = Produto.setID();
+
     }
 
     static setID(){
@@ -30,24 +31,28 @@ class Produto {
 class Acessorio extends Produto{
     constructor(nome, valor){
         super(nome, valor);
+        this.categoria = 'Acessórios';
     }
 }
 
 class Alimento extends Produto{
     constructor(nome, valor){
         super(nome, valor);
+        this.categoria = 'Alimentos';
     }
 }
 
 class Bebida extends Produto{
     constructor(nome, valor){
         super(nome, valor);
+        this.categoria = 'Bebidas';
     }
 }
 
 class Eletronico extends Produto{
     constructor(nome, valor){
         super(nome, valor);
+        this.categoria = 'Eletrônicos';
     }
 }
 

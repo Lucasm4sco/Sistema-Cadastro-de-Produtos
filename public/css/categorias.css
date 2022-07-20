@@ -11,7 +11,7 @@ body{
     background-color: rgb(28, 91, 151);
 }
 
-main {
+section {
     width: 90%;
     height: 70%;
     margin: auto;
@@ -20,6 +20,47 @@ main {
     display: flex;
     position: relative;
     overflow: hidden;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, sans-serif;
+    font-size: 15pt;
+    flex-shrink: 0;
+}
+
+h2{
+    margin-left: 5%;
+    margin-top: 6%;
+    color: #39395d;
+}
+
+main ul {
+    height: 90%;
+    background-color: aqua;
+    width: 100%;
+    overflow: auto;
+    list-style: none;
+}
+
+details {
+    background-color: white;
+    height: 100%;
+}
+
+summary {
+    background-color: #39395d;
+    list-style: none;
+    height: 100%;
+}
+
+main ul li {
+    cursor: pointer;
+    margin: 2%;
+    min-height: 12%;
 }
 
 nav {
@@ -32,6 +73,11 @@ nav {
     font: 14pt tahoma;
     /* animation: menu 1s 1s forwards; */
 }
+
+
+
+
+
 
 @keyframes voltarMenu {
     to {
@@ -133,80 +179,11 @@ a {
 }
 
 
-form{
-    width: 100%;
-    height: 100%;
-    color: rgb(3, 3, 3);
-    flex-shrink: 0;
-}
 
-header { 
-    height: 30%;
-    display: grid;
-    place-items: center;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-section {
-    width: 90%;
-    margin: auto;
-    height: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    font-family: Helvetica, sans-serif;
-    font-size: 15pt;
-}
-
-select{
-    cursor: pointer;
-}
-
-button {
-    /* height: 10%; */
-    width: 80%;
-    height: 15%;
-    color: white;
-    background-color: black;
-    border: 0;
-    border-radius: 5px;
-    transition: all .3s ease;
-    cursor: pointer;
-    align-self: center;
-}
-
-select{
-    font: 12pt helvetica;
-    width: 30%;
-    background-color: gray;
-    border: 0 0 2px 0 solid white;
-    color: aliceblue;
-}
-
-button:hover {
-    /* background-color: rgb(37, 36, 36); */
-    background-color: rgb(41, 43, 43);
-}
-
-input{
-    margin-top: 10px;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-}
-
-@media only screen and (max-width: 550px){
-    .container {
-        flex-direction: column;
-    }
-}
 
 @media (min-width:714px){
-    main {
+    section {
         width: 600px;
     }
 }

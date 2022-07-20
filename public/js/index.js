@@ -59,7 +59,8 @@ const n3 = document.querySelector('.n3');
 let condicaoAbrirMenu = true;
 
 // configurações botao Menu
-botaoMenu.addEventListener('click', () => {
+
+function animacaoMenu(){
     if(condicaoAbrirMenu){
         menu.style.animation = " menu 1s forwards";
         n1.style.animation = "virar .5s normal forwards";
@@ -105,7 +106,7 @@ botaoMenu.addEventListener('click', () => {
             
         }, 400 ) 
     }
-    
+}
 
-})
+botaoMenu.addEventListener('click', animacaoMenu)
 
