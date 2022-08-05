@@ -22,6 +22,8 @@ app.listen(PORT);
 
 app.get('/', (req, res) => res.render('../views/pages/index'));
 
+app.get('/categorias', (req, res) => res.render('../views/pages/categorias', { title: 'Categorias' }))
 
-app.get('/categorias', (req, res) => res.render('../views/pages/categorias',))
+app.get('/produtos', (req, res) => res.render('../views/pages/produtos', { title : 'Produtos' }))
+
 

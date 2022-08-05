@@ -66,6 +66,18 @@ botaoMenu.addEventListener('click', animacaoMenu)
 const listaCategorias = document.querySelector('#lista');
 let categoriasJaColocadas = [];
 
+function produtosCorrespondente(categoria){
+
+    const produtos = loja.produtos.filter( produto => produto.categoria == categoria );
+
+    let li = '';
+
+    produtos.forEach( element => li += `<li>${element.produto} <span>${element.valor}</span></li>` )
+
+    return li
+
+}
+
 async function gerarCategorias() {
 
     await getProdutos();
@@ -75,12 +87,16 @@ async function gerarCategorias() {
         if (categoriasJaColocadas.indexOf(produto.categoria) == -1) {
 
             categoriasJaColocadas.push(produto.categoria)
+
+            const listaProdutos = produtosCorrespondente(produto.categoria)
+
             return acumulador += `<li class="${produto.categoria}"> 
                             <details> 
-                            <summary> <p>${produto.categoria}</p> <span class="simbolo"> ‹ </span> </summary> <li>TESTE </li>
+                            <summary> <p>${produto.categoria}</p> <span class="simbolo"> ‹ </span> </summary> 
+                            ${listaProdutos}
                             </details> 
                             </li>`;
-        }
+        };
 
 
 

@@ -2,28 +2,31 @@ class Loja{
     nome;
     propietario;
     produtos = [];
+    static id = 0;
+
     constructor(nome, dono){
         this.nome = nome;
         this.propietario = dono;
-        
     }
+
     setProduto(produto){
         this.produtos.push(produto);
-    }
-}
-
-class Produto {
-    id = 0;
-    constructor(nome, valor){
-        this.produto = nome;
-        this.valor = valor;
-        this.id = Produto.setID();
-
     }
 
     static setID(){
         this.id++
         return this.id;
+    }
+}
+
+class Produto {
+
+    id = 0;
+
+    constructor(nome, valor){
+        this.produto = nome;
+        this.valor = valor;
+        this.id = Loja.setID();
     }
 
 }

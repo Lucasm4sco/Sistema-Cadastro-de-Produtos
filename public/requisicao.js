@@ -23,7 +23,8 @@ async function setNewProduto(produto){
 
     await getProdutos();
 
-    console.log(loja)
+    console.log(loja);
+
 } 
 
 export { getProdutos, setNewProduto }

@@ -49,6 +49,8 @@ botaoCadastro.addEventListener('click', () => {
     const novoProduto = criarProduto(produto.value, valorProduto.value, categoriaProduto);
 
     setNewProduto(novoProduto);
+
+    alert(`${novoProduto.produto} foi adicionado!`);
 })
 
 const botaoMenu = document.querySelector('.menu');
