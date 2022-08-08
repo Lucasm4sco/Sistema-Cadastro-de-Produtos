@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -44,7 +44,7 @@ main ul {
     width: 100%;
     overflow: auto;
     list-style: none;
-}
+} */
 
 
 main ul li {
@@ -107,9 +107,5 @@ details p {
 }
 
 
-@media (min-width:714px){
-    section {
-        width: 600px;
-    }
-}
+
 

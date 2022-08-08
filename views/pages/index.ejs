@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="./css/index.css" defer>
     <link rel="stylesheet" href="./css/menu.css" defer>
     <script src="./js/menu.js" defer></script>
+    <script src="./js/index.js" defer></script>
 </head>
 
 <body>
 
     <main>
 
-        <form action="/" method="post">
+        <form action="/" name="formulario" method="post">
             <header>
                 <h1>Cadastro de produtos</h1>
 
@@ -34,32 +35,41 @@
                 </div>
 
                 <div id="divCategoria">
-                    <label for="novaCategoria">Informe a Categoria*: </label> 
+                    <label for="novaCategoria">Informe a Categoria*: </label>
                     <input type="text" id="novaCategoria" placeholder="Categoria" name="novaCategoria">
                 </div>
 
-                <div  class="container">
+                <div class="container">
                     <div>
                         <label for="name">Nome do produto*: </label> <br>
-                        <input type="text" id="name" name="produto" placeholder="Produto" required>  
+                        <input type="text" id="name" name="produto" placeholder="Produto" required>
                     </div>
                     <div>
                         <label for="valor">Valor*:</label> <br>
                         <input type="text" id="valor" name="valor" placeholder="R$0,00" required>
                     </div>
-                    
+
                 </div>
 
-                <button type="submit">Cadastrar</button>
+                <button type="button">Cadastrar</button>
 
             </section>
         </form>
 
         <%- include('../layout/menu') %>
-        
+
     </main>
 
-    <script src="./js/index.js" type="module"></script>
+    <script>
+
+        const message = "<%= mensagem %>";
+
+        if (message) {
+
+            alert(message);
+        }
+
+    </script>
 
 </body>
 

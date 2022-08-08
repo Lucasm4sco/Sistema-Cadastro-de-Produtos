@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import {criarProduto} from '../public/js/classes.js'
+import {Produto, loja, Loja} from '../public/js/classes.js'
 
 async function lerArquivo(){
 
@@ -12,14 +12,43 @@ async function gravarArquivo(produto, valor, categoria){
 
     const dadosLoja = await lerArquivo();
 
+    const verificar = produtosExistentes(dadosLoja, produto)
+
+    if(!verificar){
+        return false
+    }
+
     const id = dadosLoja.produtos.length + 1;
-    const novoProduto = criarProduto(produto, valor, categoria, id);
+    const novoProduto = Produto.criarProduto(produto, valor, categoria, id);
 
     dadosLoja.produtos.push(novoProduto);
 
     await fs.writeFile('./data/loja.json', JSON.stringify(dadosLoja));
 
     return dadosLoja;
+}
+
+async function retornarDadosAntigos(){
+
+    Loja.adicionaProdutosEstaticos(loja);
+
+    await fs.writeFile('./data./loja.json', JSON.stringify(loja))
+
+    return
+}
+
+function produtosExistentes(loja, nomenovoProduto){
+
+    const nomesiguais = loja.produtos.filter(produto => produto.produto == nomenovoProduto
+    );
+    
+    
+    if(nomesiguais.length != 0){
+        return false
+    }
+
+    return true
+    
 }
 
 async function gerarCategorias(){
@@ -41,7 +70,6 @@ async function gerarHTMLCategorias(){
 
         const produtosCorrespondente = loja.produtos.filter( produto => produto.categoria == categoria );
 
-        console.log(produtosCorrespondente);
         const HTMLprodutos = produtosCorrespondente.reduce( (acumulador, produto) => {
             
             acumulador += `
@@ -96,4 +124,4 @@ async function gerarHTMLProdutos(){
     return HTMLprodutos;
 }
 
-export {lerArquivo, gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos}
+export {lerArquivo, gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos}
