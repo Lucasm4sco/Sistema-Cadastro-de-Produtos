@@ -1,10 +1,6 @@
 import express from 'express';
-
-// import path from 'node:path';
-// import { dirname } from 'path';
-// import { fileURLToPath } from 'url';
-
-// const __dirname = dirname(fileURLToPath(import.meta.url));
+import router from './routes/route.js';
+import bodyParser from 'body-parser';
 
   
 const app = express();
@@ -12,18 +8,19 @@ const PORT = process.env.port || 3000;
 
 app.use(express.json()); 
 
+app.use(bodyParser.urlencoded({extended:true})); 
+
 app.set('view engine', 'ejs');
 
-// app.use(express.static(path.join(__dirname, "public")));
-
 app.use(express.static("public"));
+ 
+app.listen(PORT);  
+ 
+app.use('/', router) 
 
-app.listen(PORT);
-
-app.get('/', (req, res) => res.render('../views/pages/index'));
-
-app.get('/categorias', (req, res) => res.render('../views/pages/categorias', { title: 'Categorias' }))
-
-app.get('/produtos', (req, res) => res.render('../views/pages/produtos', { title : 'Produtos' }))
+app.use('/categorias', router)
+ 
+app.use('/produtos', router) 
 
 
+ 

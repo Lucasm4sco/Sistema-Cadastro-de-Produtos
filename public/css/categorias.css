@@ -33,42 +33,78 @@ main {
 }
 
 h2{
-    margin-left: 5%;
-    margin-top: 6%;
-    color: #39395d;
+    padding: 10% 10% 0 5%;
+    color: #121216;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 main ul {
-    height: 90%;
-    background-color: aqua;
+    transform: translateY(5%);
+    height: 80%;
     width: 100%;
     overflow: auto;
     list-style: none;
 }
 
-details {
-    background-color: white;
-    height: 100%;
-}
-
-summary {
-    background-color: #39395d;
-    list-style: none;
-    height: 100%;
-}
 
 main ul li {
     cursor: pointer;
     margin: 2%;
     min-height: 12%;
+    border: none;
 }
 
-p {
-    width: 90%;
+details {
+    appearance: none;
+    background-color: white;
+    height: 100%;
+    width: 100%;
 }
 
+summary {
+    
+    background-color: #c97a13f6;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
 
+summary span {
+    transform: rotate(-90deg) translateY(-20%);
+    color: white;
+    font-size: 35px;
+}
 
+details p {
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.produto {
+    border: 1px solid black;
+    display: flex;
+    padding: 5px;
+    overflow-y: auto;
+    align-items: center;
+    font-size: .98em;
+    background-color: gray;
+}
+
+.produto p {
+    width: 75%;
+}
+
+.produto span {
+    display: flex;
+    height: auto;
+    flex-wrap: wrap;
+    
+}
 
 
 @media (min-width:714px){

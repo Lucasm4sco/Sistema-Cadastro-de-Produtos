@@ -21,9 +21,8 @@ class Loja{
 
 class Produto {
 
-    id = 0;
-
     constructor(nome, valor){
+
         this.produto = nome;
         this.valor = valor;
         this.id = Loja.setID();
@@ -66,7 +65,7 @@ class Generica extends Produto{
     }
 }
 
-function criarProduto(nome, valor, categoria){
+function criarProduto(nome, valor, categoria, id){
     let produto;
     switch(categoria){
         case 'Acessorio': produto = new Acessorio(nome, valor); break;
@@ -75,6 +74,10 @@ function criarProduto(nome, valor, categoria){
         case 'Eletronico': produto = new Eletronico(nome, valor); break;
         default:
             produto = new Generica(nome, valor, categoria);
+    }
+
+    if(id != undefined){
+        produto.id = id;
     }
     
     return produto;
@@ -91,8 +94,6 @@ function adicionaProdutos(){
     loja.setProduto(criarProduto('Boné', 50, 'Acessorio'))
     loja.setProduto(criarProduto('Headset', 183.90, 'Eletronico'))
 }
-
-
 
 export { loja, criarProduto , adicionaProdutos}
 
