@@ -18,7 +18,7 @@
 
 .n1{
     top: 0;
-    /* animation: virar .5s 1s normal forwards; */
+    
 }
 
 .n2{
@@ -27,7 +27,7 @@
 
 .n3{
     top: 20px;
-    /* animation: virar2 .5s 1s normal forwards; */
+   
 }
 
 nav {
@@ -38,7 +38,7 @@ nav {
     position: relative;
     left: 0;
     font: 14pt tahoma;
-    /* animation: menu 1s 1s forwards; */
+
 }
 
 nav ul{

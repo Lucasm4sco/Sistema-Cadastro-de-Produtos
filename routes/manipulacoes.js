@@ -72,9 +72,10 @@ async function gerarHTMLCategorias(){
 
         const HTMLprodutos = produtosCorrespondente.reduce( (acumulador, produto) => {
             
+            const valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(produto.valor)
             acumulador += `
             <li class="produto">
-                <p>${produto.produto}</p> <span>${produto.valor} </span>
+                <p>${produto.produto}</p> <span>${valor} </span>
             </li>`
             
             return acumulador
@@ -113,9 +114,11 @@ async function gerarHTMLProdutos(){
     let HTMLprodutos = '';
     for( let produto of loja.produtos ){
 
+        const valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(produto.valor);
+
         HTMLprodutos += `
             <li>
-                <p> ${produto.produto} </p> <span class="id"> ${produto.id} </span>
+                <p> ${produto.produto} </p>  <span class="valor"> ${valor} </span>  <span class="id"> #${produto.id} </span>
                 <span class="categoria"> ${produto.categoria} </span> 
             </li>
         `
