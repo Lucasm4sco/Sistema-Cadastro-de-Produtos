@@ -6,6 +6,7 @@ main ul {
     width: 90%;
     margin: auto;
     gap: 10%;
+    padding-bottom: 40px;
 }
 
 main ul li {
@@ -57,7 +58,7 @@ li span.id{
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #0a0a0ab2;
+    background-color: #161414c2;
     display: grid;
     place-items: center;
     z-index: -1;
@@ -90,10 +91,10 @@ li span.id{
     height: 60%;
     max-width: 550px;
     width: 80%;
-    /* background-color: rgb(218, 226, 223); */
-    background-color: #a4abad;
-    border-radius: 2px;
-    border: 2px solid rgb(62, 63, 71);
+    background-color: rgb(125, 132, 139);
+    /* background-color: #a4abad; */
+    border-radius: 20px;
+    border: 1px solid rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,9 +110,9 @@ li span.id{
 
 .produto button{
     padding: 5px 10px;
-    border: 1px solid rgb(62, 63, 71);
+    border: 1px solid rgb(36, 36, 39);
     border-radius: 5px;
-    margin: 5px 10px;
+    margin: 5px 20px;
 }
 
 button {
@@ -119,11 +120,13 @@ button {
 }
 
 .excluir {
-    background-color: rgb(177, 79, 79);
+    background-color: rgba(90, 27, 27, 0.938);
+    color: white;
 }
 
-.editar {
-    background-color: rgba(63, 56, 56, 0.699);
+.gravar {
+    background-color: rgba(71, 63, 63, 0.699);
+    color: white;
 }
 
 .cancelar {

@@ -141,4 +141,21 @@ async function deletandoProduto(id){
     await fs.writeFile('./data/loja.json', JSON.stringify(loja));
 }
 
-export {lerArquivo, gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos, deletandoProduto}
+async function modificandoProduto(id, produtoAtual){
+
+    const loja = await lerArquivo();
+
+    loja.produtos.forEach( produto => {
+        
+        if(produto.id == id){
+
+            produto.categoria = produtoAtual.categoria;
+            produto.valor = produtoAtual.valor;
+            produto.produto = produtoAtual.produto;
+        }
+    });
+
+    await fs.writeFile('./data/loja.json', JSON.stringify(loja));
+}
+
+export {lerArquivo, gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos, deletandoProduto, modificandoProduto}

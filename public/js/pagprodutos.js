@@ -61,6 +61,13 @@ produtos.forEach( elemento => {
 })
 
 const $botoes = document.querySelectorAll('.pop-up button');
+const $cancelar = document.querySelector('.cancelar img');
+
+function sairpopUp(){
+
+    popUp.style.animation = "sair-popup .5s ease forwards";
+    setTimeout( () => window.location.reload(), 200 )
+}
 
 async function excluirProduto(){
 
@@ -68,8 +75,50 @@ async function excluirProduto(){
     const promisse = await fetch(`/produtos/${$id.innerHTML}`, { method: 'DELETE'})
 
     if(promisse){
+
         alert('O produto foi excluído!');
-        window.location.reload()
+        sairpopUp();
+    }
+}
+
+function verificarProduto(){
+
+    const inputs = document.querySelectorAll('form input');
+
+    for(let input of inputs){
+
+        if( input.value == '' || input.value == null || input.value == undefined ){
+            alert('Não é possível fazer essa alteração!');
+            return
+        }
+    }
+
+    const categoria = inputs[0].value;
+    const produto = inputs[1].value;
+    const valor = Number( inputs[2].value )
+    const id = Number( document.querySelector('span#id').innerHTML )
+
+    if(isNaN(valor)) {
+        alert('O valor informado deve ser um número!')
+        return
+    }
+
+    gravarDados(categoria, produto, valor, id);
+
+};
+
+async function gravarDados(categoria, produto, valor, id){
+    
+    const promisse = await fetch(`/produtos/${id}`, { 
+        method: 'PUT',
+        headers: { 'Content-type': 'application/json; charset=utf-8' },
+        body: JSON.stringify( { categoria, produto, valor } )
+    })
+
+    if(promisse){
+        
+        alert('O produto foi modificado com sucesso!');
+        sairpopUp();
     }
 }
 
@@ -84,9 +133,17 @@ $botoes.forEach( botao =>
 
             if(botao.className == "excluir"){
                 excluirProduto();
+                return
             }
+
+            verificarProduto();
     
         }, 200)
 
     })
 )
+
+$cancelar.addEventListener('click', sairpopUp)
+
+
+

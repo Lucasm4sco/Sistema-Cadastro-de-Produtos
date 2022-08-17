@@ -1,4 +1,4 @@
-import {gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos, deletandoProduto} from './manipulacoes.js'
+import {gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos, deletandoProduto, modificandoProduto} from './manipulacoes.js'
 import { StatusCodes } from 'http-status-codes';
 
 
@@ -95,4 +95,22 @@ async function deletarProduto(req, res, next){
     }
 }
 
-export { paginaCadastro, paginaCategorias, paginaProdutos, adicionarProduto, deletarProduto }
+async function modificarProduto(req, res, next){
+
+    try{
+
+        const id = req.params.idProduto;
+
+        const body = req.body;
+
+        await modificandoProduto(id, body);
+
+        res.status(StatusCodes.ACCEPTED).send('Produto modificado');
+
+    }catch(err){
+
+        res.status(StatusCodes.FORBIDDEN).send(err);
+    }
+}
+
+export { paginaCadastro, paginaCategorias, paginaProdutos, adicionarProduto, deletarProduto, modificarProduto}
