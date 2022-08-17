@@ -18,7 +18,10 @@ async function gravarArquivo(produto, valor, categoria){
         return false
     }
 
-    const id = dadosLoja.produtos.length + 1;
+    const id = dadosLoja.produtos[dadosLoja.produtos.length - 1].id + 1;
+
+    if(id == undefined || isNaN(id)) id = 1;
+
     const novoProduto = Produto.criarProduto(produto, valor, categoria, id);
 
     dadosLoja.produtos.push(novoProduto);
@@ -127,4 +130,15 @@ async function gerarHTMLProdutos(){
     return HTMLprodutos;
 }
 
-export {lerArquivo, gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos}
+async function deletandoProduto(id){
+
+    const loja = await lerArquivo();
+
+    const arrayProdutos = loja.produtos.filter( produto => produto.id != id)
+
+    loja.produtos = arrayProdutos
+
+    await fs.writeFile('./data/loja.json', JSON.stringify(loja));
+}
+
+export {lerArquivo, gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos, deletandoProduto}

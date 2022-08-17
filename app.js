@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
 
 app.use(express.static("public"));
- 
+  
 app.listen(PORT);   
  
-app.use('/', router) 
+app.use('/', router)  
 
 app.use('/categorias', router)
  

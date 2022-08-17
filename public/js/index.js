@@ -7,11 +7,9 @@ const mostrarNovaCategoria = () => {
     if($selectCategoria.value == 'Generica'){
                 
         divCategoria.classList.remove('display-none');
-        novaCategoria.setAttribute('required', 'required');
         return
     }
     divCategoria.classList.add('display-none');
-    novaCategoria.removeAttribute('required');
 }
 
 
@@ -21,26 +19,39 @@ $selectCategoria.addEventListener('change', mostrarNovaCategoria);
 
 const valor = document.querySelector('#valor');
 
-const button = document.querySelector('button')
+const button = document.querySelector('.enviar')
 
 button.onclick = function (){
 
     try{
+
+        let categoria = $selectCategoria.value;
+
+        if(categoria == 'Generica')
+            categoria = novaCategoria.value;
+
+        const nome = document.querySelector('#name');
+
         let novoValor = valor.value.replace(',', '.');
+
+        [categoria, nome, valor.value].forEach( element => {
+            if(element == undefined || element == null || element == ''){
+                throw new Error('SyntaxError')
+            }
+        })
+
         novoValor = Number(novoValor);
         
         if(isNaN(novoValor)) {
             throw new Error('SyntaxError');
         } 
-        else {
-            document.formulario.submit();
-        }
-
         
+        document.formulario.submit();
+
 
     } catch(Error){
         
-        alert('O valor deve conter um número!')
+        alert('Preencha o formulário corretamente!')
         return 
     }
 

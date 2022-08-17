@@ -1,4 +1,4 @@
-import {gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos} from './manipulacoes.js'
+import {gravarArquivo, gerarHTMLCategorias, gerarHTMLProdutos, retornarDadosAntigos, deletandoProduto} from './manipulacoes.js'
 import { StatusCodes } from 'http-status-codes';
 
 
@@ -63,12 +63,12 @@ async function paginaCategorias(req, res, next){
     
 } 
 
-async function paginaProdutos( req, res, next){
+async function paginaProdutos(req, res, next){
     
     try{
 
         const html = await gerarHTMLProdutos();
-        res.render('../views/pages/produtos', { title : 'Produtos', html: html});
+        res.render('../views/pages/produtos', { title : 'Produtos', html: html, message: ''});
 
     } catch(err){
 
@@ -79,4 +79,20 @@ async function paginaProdutos( req, res, next){
     
 }
 
-export { paginaCadastro, paginaCategorias, paginaProdutos, adicionarProduto }
+async function deletarProduto(req, res, next){
+
+    try{
+
+        const id = req.params.idProduto;
+
+        await deletandoProduto(Number(id));
+
+        res.status(StatusCodes.ACCEPTED).send('Produto deletado')
+
+    }catch(err){
+
+        res.status(StatusCodes.FORBIDDEN).send(err);
+    }
+}
+
+export { paginaCadastro, paginaCategorias, paginaProdutos, adicionarProduto, deletarProduto }
